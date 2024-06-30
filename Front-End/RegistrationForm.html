@@ -1,0 +1,227 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="false"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Register Employee</title>
+<!-- Add Bootstrap CSS (you may need to adjust the paths) -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script>
+    /* Status Checking */
+    function NonActive(){
+        let x = document.forms.getElementById("non-active");
+        let y = document.getElementById("dd");
+
+        if(x.checked)
+        {
+            y.required = false;
+        }
+        return false;
+    }
+
+    /* Form Validation */
+    function validateForm() {
+      let a = document.forms["addform"]["name"].value;
+      if (a == "" || a == null) {
+        alert("Name must be filled out");
+        return false;
+      }
+
+      let b = document.forms["addform"]["salary"].value;
+      if (b == "" || b == null) {
+        alert("salary must be filled out");
+        return false;
+      }
+
+      let c = document.forms["addform"]["department"].value;
+      if (c == "" || c == null) {
+        alert("department must be filled out");
+        return false;
+      }
+
+      let d = document.forms["addform"]["jd"].value;
+      if (d == "" || d == null) {
+        alert("Joining date must be filled out");
+        return false;
+      }
+
+      let e = document.forms["addform"]["active"].value;
+      if (e == "" || e == null) {
+        alert("Active must be checked out");
+        return false;
+      }
+    }
+</script>
+  <style>
+    /* Style for the sidebar */
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Adjust the width as needed */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #333; /* Change the background color as needed */
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #555; /* Change the background color on hover */
+    }
+
+    /* Style for the content box */
+    .content-box {
+      margin-left: 270px; /* Adjust the margin to match the sidebar width */
+      padding: 20px;
+    }
+
+    .content-box h1{
+      text-align: center; font-family :'Times New Roman', 'Times', 'serif'; 
+    
+    }
+
+    .txtbox{
+        width: 200px;
+    }
+  </style>
+</head>
+<body style="background-color:#ccc">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <form id="view" action="/view-employee" method="get">
+    <a href="Home.html">HOME</a>
+    <a href="RegistrationForm.html">ADD</a>
+    <a href="SearchForm.html">SEARCH</a>
+    <a href="UpdateForm.html">UPDATE</a>
+    <a class="a" form="view" href="View.html">VIEW</a>
+  </div>
+
+  <!-- Content Box -->
+  <div class="content-box">
+    <h1>EMPLOYEE REGISTRATION FORM</h1>
+    <p></p><br><br><br>
+
+    <form id="addform" name="addform" action="/register-employee" onsubmit="validateform()" method="post" required>
+        <table style="width: 100%; height: auto;">
+    
+            <tr style="width: 500px;">
+                <td style="height: 50px; width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <label for="name" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE NAME :</label>
+                </td>
+                <td style="width: 300px;">
+                    <input id="name" name="name" placeholder="ENTER NAME" style="margin-left: 25px; height: 25px;" required/>
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+    
+            <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="salary" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE SALARY :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="salary" name="salary" placeholder="ENTER SALARY" style="margin-left: 25px; height: 25px;" required/>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+            </tr>
+                
+            <tr style="width: 500px;">
+                <td style="height: 50px;  width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <label for="department" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DEPARTMENT :</label>
+                </td>
+                <td style="width: 300px;">
+                    <select name="department" style="margin-left: 25px; width: 170px; height: 25px;" required>
+                        <option id="select" value="NULL" >-SELECT-</option>
+                        <option id="Production" value="Production">PRODUCTION</option>
+                        <option id="Finance" value="Finance">FINANCE</option>
+                        <option id="Marketing & Sales" value="Marketing & Sales">MARKETING & SALES</option>
+                        <option id="Human Resource" value="Human Resource">HUMAN RESOURCES</option>
+                        <option id="Information Technology" value="Information Technology">INFORMATION TECHNOLOGY</option>
+                    </select>   
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+        
+            <tr style="width: 500px;">
+                <td style="height: 50px;  width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <label for="jd" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DATE OF JOINING :</label>
+                </td>
+                <td style="width: 300px;">
+                    <input id="jd" name="jd" type="date" style="margin-left: 25px; width: 165px; height: 25px;" required/>
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+    
+            <tr style="width: 500px;">
+                <td style="height: 50px;  width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <label for="dd" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DEPARTURE DATE :</label>
+                </td>
+                <td style="width: 300px;">
+                    <input id="dd" name="dd" type="date" style="margin-left: 25px; width: 165px; height: 25px;"/>
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+    
+            <tr style="width: 500px;">
+                <td style="height: 50px;  width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <label for="status" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE STATUS :</label>
+                </td>
+                <td style="width: 300px;">
+                    <input id="active" name="status" style="margin-left: 25px; height: 25px;" type="radio" >ACTIVE</input><input id="non-active" name="status" style="margin-left: 25px; height: 25px;" type="radio">NON-ACTIVE</input>
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+            
+            <tr style="width: 500px;">
+                <td style="height: 50px;  width: 300px;"></td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;">
+                    <button id="addform" type="submit" name="addform" value="Submit" style="font-size: medium; border-radius: 10px; text-align: center; margin-left: 50px; width: 100px; height: 50px; margin-top: 30px;">SUBMIT</button>
+                </td>
+                <td style="width: 300px;">
+                    <button id="addform" type="reset" name="addform" value="Reset" style="font-size: medium; border-radius: 10px; text-align: center; margin-left: 50px; width: 100px; height: 50px; margin-top: 30px;">RESET</button>
+                </td>
+                <td style="width: 300px;"></td>
+                <td style="width: 300px;"></td>
+            </tr>
+        </table>
+  </div>
+  <!-- Add Bootstrap JS (you may need to adjust the paths) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!-- </jsp:root> -->

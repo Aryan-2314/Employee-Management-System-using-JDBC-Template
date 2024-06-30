@@ -1,0 +1,150 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="false"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml"> -->
+  <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Search Form</title>
+
+  <script>
+    function validateForm() {
+      let x = document.forms["searchform"]["id"].value;
+      let y = document.forms["searchform"]["name"].value;
+      if ((x == "" || x == null) || (y == "" || y == null) || (z == "" || z == null)) {
+        alert("One field must be filled out");
+        return false;
+      }
+    }
+</script>
+  <!-- Add Bootstrap CSS (you may need to adjust the paths) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    /* Style for the sidebar */
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Adjust the width as needed */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #333; /* Change the background color as needed */
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar button {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      /* display: block; */
+      background-color: #555
+    }
+
+    .sidebar a:hover {
+      background-color: #555; /* Change the background color on hover */
+    }
+
+    /* Style for the content box */
+    .content-box {
+      text-align: center;
+      margin-left: 250px; /* Adjust the margin to match the sidebar width */
+      padding: 20px;
+    }
+
+    .txtbox{
+        width: 300px;
+    }
+  
+    .search {
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+    }
+  
+    .label {
+      text-align: center;
+              font-family: Arial, sans-serif;
+              font-size: 16px;
+              color: #333;
+          }
+  
+        .input[type="text"] {
+          text-align: center;
+              width: 100%;
+              padding: 8px;
+              margin: 5px 0;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+          }
+  
+          .button {
+            text-align: center;
+              color: #fff;
+              border: none;
+              border-radius: 4px;
+              padding: 10px 20px;
+              cursor: pointer;
+              font-size: 16px;
+          }
+  </style>
+</head>
+<body style="background-color:#ccc">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <form id="view" action="/view-employee" method="get">
+    <a href="Home.html">HOME</a>
+    <a href="RegistrationForm.html">ADD</a>
+    <a href="SearchForm.html">SEARCH</a>
+    <a href="UpdateForm.html">UPDATE</a>
+    <a class="a" form="view" href="View.html">VIEW</a>
+  </div>
+
+  <!-- Content Box -->
+  <div class="content-box">
+    <h1 style="text-align: center; font-family :'Times New Roman', 'Times', 'serif'; padding: 40px;">EMPLOYEE SEARCH</h1>
+    <p></p><br><br><br>
+
+    <form action="" method="post"  align="center">
+
+        <!-- Name Input -->
+        <label for="name" style="width: 150px; margin-right: 30px; text-align: left; background-color: #555; color: aliceblue; padding-left: 10px;">Employee ID</label>
+        <input type="text" id="id" name="id" placeholder="Enter ID" required><br><br>
+
+        <!-- Salary Input -->
+        <label for="salary" style="width: 150px; margin-right: 30px; text-align: left; background-color: #555; color: aliceblue; padding-left: 10px;">Employee Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Name"><br><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Ok" style="margin-left: 190px; width: 90px; padding-right: 10px;">
+
+        <!-- Reset Button -->
+        <input type="reset" value="Cancel" style="width: 90px; padding-left: 10px;"><br><br>
+
+    </form>
+  </div>
+
+  <!-- Add Bootstrap JS (you may need to adjust the paths) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

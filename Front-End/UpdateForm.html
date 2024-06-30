@@ -1,0 +1,267 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="false"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml"> -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <title>Update Employee</title>
+    <!-- Add Bootstrap CSS (you may need to adjust the paths) -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <%! -->
+<script>
+ 
+            window.onload = function() {
+            document.getElementById("id").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("salary").disabled = true;
+            document.getElementById("department").disabled = true;
+            document.getElementById("jd").disabled = true;
+            document.getElementById("dd").disabled = true;
+            document.getElementById("active").disabled = true;
+            document.getElementById("non-active").disabled = true;
+        }
+
+        // function enableFields() {
+        //     document.getElementById("id").removeAttribute("disabled");
+        //     document.getElementById("name").removeAttribute("disabled");
+        //     document.getElementById("salary").removeAttribute("disabled");
+        //     document.getElementById("department").removeAttribute("disabled");
+        //     document.getElementById("jd").removeAttribute("disabled");
+        //     document.getElementById("dd").removeAttribute("disabled");
+        //     document.getElementById("active").removeAttribute("disabled");
+        //     document.getElementById("Ok").removeAttribute("disabled");
+        //     document.getElementById("Cancel").removeAttribute("disabled");
+
+        //     document.getElementById("id").value = ${employee.id}
+        //     document.getElementById("name").value = ${employee.name}
+        //     document.getElementById("salary").value = ${employee.salary}
+        //     document.getElementById("department").value = ${employee.department}
+        //     document.getElementById("jd").value = ${employee.joining_date}
+        //     document.getElementById("dd").value = ${employee.departure_date}
+        //     document.getElementById("active").value = ${employee.active}
+        // }
+
+        function resetForm() {
+            document.getElementById("id").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("salary").disabled = true;
+            document.getElementById("jd").disabled = true;
+            document.getElementById("dd").disabled = true;
+            document.getElementById("status").disabled = true;
+        }
+
+
+        /* Form Validation */
+        function validateForm() {
+
+            let b = document.forms["addform"]["id"].value;
+          if (b == "" || b == null) {
+            alert("salary must be filled out");
+            return false;
+          }
+
+          let a = document.forms["addform"]["name"].value;
+          if (a == "" || a == null) {
+            alert("Name must be filled out");
+            return false;
+          }
+        }
+</script>
+<!-- %> -->
+      <style>
+        /* Style for the sidebar */
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Adjust the width as needed */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #333; /* Change the background color as needed */
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar button {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      background-color: #555
+    }
+
+    .sidebar a:hover {
+      background-color: #555; /* Change the background color on hover */
+    }
+
+    /* Style for the content box */
+    .content-box {
+      text-align: center;
+      margin-left: 250px; /* Adjust the margin to match the sidebar width */
+      padding: 20px;
+    }
+
+    .content-box h1{
+      text-align: center; font-family :'Times New Roman', 'Times', 'serif'; 
+      
+    }
+
+    .txtbox{
+        width: 300px;
+    }
+      </style>
+    </head>
+    <body style="background-color:#ccc">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <form id="view" action="/view-employee" method="get">
+        <a href="Home.html">HOME</a>
+        <a href="RegistrationForm.html">ADD</a>
+        <a href="SearchForm.html">SEARCH</a>
+        <a href="UpdateForm.html">UPDATE</a>
+        <a class="a" form="view" href="View.html">VIEW</a>
+        </form>
+      </div>
+    
+      <!-- Content Box -->
+      <div class="content-box">
+        <%!${message}%>
+        <h1>UPDATE EMPLOYEE</h1>
+        <p></p><br><br><br>
+    
+        <form id="addform" style="margin-top: -30px;" name="addform" action="/update-employee" onsubmit="validateform()" method="post" required>
+            <table style="width: 100%; height: auto;">
+        
+                <tr style="width: 500px;">
+                    <td style="height: 50px; width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="id" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE ID :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="id" name="id" placeholder="ENTER ID" style="margin-left: 25px; height: 25px;" required/>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+
+                <tr style="width: 500px;">
+                    <td style="height: 50px; width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="name" style="font-family: Arial, Helvetica, sans-serif; height: 25px;background-color: #555; color: aliceblue;">EMPLOYEE NAME :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="name" name="name" placeholder="ENTER NAME" style="margin-left: 25px; height: 25px;" required/>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+        
+                <tr style="width: 500px;">
+                        <td style="height: 50px;  width: 300px;"></td>
+                        <td style="width: 300px;"></td>
+                        <td style="width: 300px;">
+                            <label for="salary" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE SALARY :</label>
+                        </td>
+                        <td style="width: 300px;">
+                            <input id="salary" name="salary" placeholder="ENTER SALARY" style="margin-left: 25px; height: 25px;" required/>
+                        </td>
+                        <td style="width: 300px;"></td>
+                        <td style="width: 300px;"></td>
+                </tr>
+                    
+                <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="department" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DEPARTMENT :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <select id="department" name="department" style="margin-left: 25px; width: 170px; height: 25px;" required>
+                            <option id="select" value="NULL" >-SELECT-</option>
+                            <option id="Production" value="Production">PRODUCTION</option>
+                            <option id="Finance" value="Finance">FINANCE</option>
+                            <option id="Marketing & Sales" value="Marketing & Sales">MARKETING & SALES</option>
+                            <option id="Human Resource" value="Human Resource">HUMAN RESOURCES</option>
+                            <option id="Information Technology" value="Information Technology">INFORMATION TECHNOLOGY</option>
+                        </select>   
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+            
+                <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="jd" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DATE OF JOINING :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="jd" name="jd" type="date" style="margin-left: 25px; width: 165px; height: 25px;" required/>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+        
+                <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="dd" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">DEPARTURE DATE :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="dd" name="dd" type="date" style="margin-left: 25px; width: 165px; height: 25px;"/>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+        
+                <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <label for="status" style="font-family: Arial, Helvetica, sans-serif; height: 25px; background-color: #555; color: aliceblue;">EMPLOYEE STATUS :</label>
+                    </td>
+                    <td style="width: 300px;">
+                        <input id="active" name="status" style="margin-left: 25px; height: 25px;" type="radio" >ACTIVE</input><input id="non-active" name="status" style="margin-left: 25px; height: 25px;" type="radio">NON-ACTIVE</input>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+                
+                <tr style="width: 500px;">
+                    <td style="height: 50px;  width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;">
+                        <button id="Ok" form="addform" type="submit" name="addform" value="Submit" style="font-size: medium; border-radius: 10px; text-align: center; margin-left: 50px; width: 100px; height: 50px; margin-top: 30px;" onclick="enableFields()" >OK</button>
+                    </td>
+                    <td style="width: 300px;">
+                        <button id="Cancel" form="addform" type="reset" name="addform" value="Reset" style="font-size: medium; border-radius: 10px; text-align: center; margin-left: 50px; width: 100px; height: 50px; margin-top: 30px;">CANCEL</button>
+                    </td>
+                    <td style="width: 300px;"></td>
+                    <td style="width: 300px;"></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Add Bootstrap JS (you may need to adjust the paths) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    <!-- </jsp:root> -->

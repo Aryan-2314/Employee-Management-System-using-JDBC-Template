@@ -1,0 +1,85 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="false"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+
+<!-- Add Bootstrap CSS (you may need to adjust the paths) -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    /* Style for the sidebar */
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Adjust the width as needed */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #333; /* Change the background color as needed */
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #555; /* Change the background color on hover */
+    }
+
+    /* Style for the content box */
+    .content-box {
+      margin-left: 270px; /* Adjust the margin to match the sidebar width */
+      padding: 20px;
+    }
+
+    .txtbox{
+        width: 200px;
+    }
+
+    .content-box h1 {
+        text-align: center; 
+        font-family :'Times New Roman', 'Times', 'serif';
+        font-size: 50px; 
+        padding: 70px;
+      
+    }
+</style>
+</head>
+<body style="background-color:#ccc">
+  <!-- <%= ${message} %> -->
+    <!-- Sidebar -->
+  <div class="sidebar">
+    <form id="view" action="/view-employee" method="get">
+    <a href="Home.html">HOME</a>
+    <a href="RegistrationForm.html">ADD</a>
+    <a href="SearchForm.html">SEARCH</a>
+    <a href="UpdateForm.html">UPDATE</a>
+    <a class="a" form="view" href="View.html">VIEW</a></form>
+  </div>
+
+  <div class="content-box">
+    <h1>EMPLOYEE MANAGEMENT SYSTEM</h1>
+    <h1>Welcome Admin !</h1>
+  </div>
+
+<!-- Add Bootstrap JS (you may need to adjust the paths) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+</jsp:root>
