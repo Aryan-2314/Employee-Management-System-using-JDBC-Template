@@ -21,8 +21,16 @@ import com.springboot.employee.employee_project.entity.EmployeeEntity;
 @RequestMapping("/employee")
 public class Controller
 {
-    @Autowired
-    private EmployeeDaoImpl employeedao;
+	// //Field Injection
+ //    @Autowired
+ //    private EmployeeDaoImpl employeedao;
+
+	//Constructor Injection
+	@Autowired
+	public Controller(EmployeeDaoImpl employeedao)
+	{
+		this.employeedao = employeedao;
+	}
     
 	@GetMapping("/employee-detail")
     public ResponseEntity<List<EmployeeEntity>> getAllEmployee()
